@@ -17,6 +17,7 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     hot: true,
+    open: true
   },
   mode: "development",
   plugins: [

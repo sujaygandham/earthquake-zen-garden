@@ -15,7 +15,7 @@ export const Nav = () => {
         />
       </Link>
       <h1>Earthquake Zen Garden</h1>
-      <Link to="/profile">Welcome Sally</Link>
+      <Link to="/profile">{`Welcome ${data.profile.firstName}`}</Link>
     </nav>
   );
 };

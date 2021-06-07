@@ -11,6 +11,7 @@ export const Home = () => {
   const [sortOrder, setSortOrder] = React.useState("");
 
   const handleSort = (column) => {
+    //if a column is already sorted, then toggle sort else sort by asc
     if (column === sortBy) {
       setSortOrder((sortOrder) => (sortOrder === "asc" ? "desc" : "asc"));
     } else {
@@ -18,7 +19,8 @@ export const Home = () => {
       setSortOrder("asc");
     }
   };
-
+  
+  //toggle up down arrows to indicate sort
   const sortArrow = (column) => {
     if (sortOrder != "" && sortBy === column) {
       return sortOrder === "asc" ? (
@@ -33,6 +35,7 @@ export const Home = () => {
     const multiplier = order === "desc" ? -1 : 1;
     switch (column) {
       case "title":
+        //sorts based on the km value
         return (a, b) =>
           multiplier *
           (parseInt(a.properties.place) - parseInt(b.properties.place));
@@ -79,8 +82,12 @@ export const Home = () => {
                       {feature.properties.place}
                     </Link>
                   </td>
-                  <td className="magnitude" data-testid="magnitude">{feature.properties.mag}</td>
-                  <td data-testid="time">{moment(feature.properties.time).format(TIME_FORMAT)}</td>
+                  <td className="magnitude" data-testid="magnitude">
+                    {feature.properties.mag}
+                  </td>
+                  <td data-testid="time">
+                    {moment(feature.properties.time).format(TIME_FORMAT)}
+                  </td>
                 </tr>
               ))}
           </tbody>
